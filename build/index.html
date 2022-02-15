@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Svelte-Tailwind Starter</title>
+
+		
+
+		<link rel="stylesheet" href="/_app/assets/start-464e9d0a.css">
+		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-d86063e2.css">
+		<link rel="modulepreload" href="/_app/start-906d71eb.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-e003bf47.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-c5343af5.js">
+		<link rel="modulepreload" href="/_app/pages/index.svelte-a2a5f30f.js">
+
+		<script type="module">
+			import { start } from "/_app/start-906d71eb.js";
+			start({
+				target: document.querySelector("#svelte"),
+				paths: {"base":"","assets":""},
+				session: {},
+				route: true,
+				spa: false,
+				trailing_slash: "never",
+				hydrate: {
+					status: 200,
+					error: null,
+					nodes: [
+						import("/_app/pages/__layout.svelte-c5343af5.js"),
+						import("/_app/pages/index.svelte-a2a5f30f.js")
+					],
+					url: new URL("http://prerender/"),
+					params: {}
+				}
+			});
+		</script>
+  </head>
+
+  <body>
+    <div id="svelte">
+
+
+
+
+Hello world
+
+</div>
+  </body>
+</html>
