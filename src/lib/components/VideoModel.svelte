@@ -1,13 +1,15 @@
 <script lang="ts">
-  export let thumbnail: string = '';
+  export let image: string = '';
   export let title =
     'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis voluptatum quaerat vel voluptatibus. Quod rem deleniti voluptatum aliquid sun';
   export let score: number = null;
+
+  console.log(image, title);
 </script>
 
 <div class={`video-wrapper ${$$props.class}`}>
-  <div class="thumbnail-wrapper">
-    <img src={thumbnail} alt="" />
+  <div class="image-wrapper">
+    <img src={image} alt="" />
   </div>
   <div class="video-details">
     <div class="channel-icon">
@@ -21,7 +23,7 @@
 
   {#if score}
     <div
-      class=" absolute top-6 right-6 bg-blue_highlight text-white font-semibold py-0.5 text-sm px-2 rounded-lg"
+      class=" absolute top-6 right-6 bg-[#ff1d1d] text-white font-semibold py-0.5 text-sm px-2 rounded-lg"
     >
       {score}
     </div>
@@ -33,11 +35,11 @@
     @apply w-full max-w-[360px] p-4 bg-[#181818] relative;
   }
 
-  .thumbnail-wrapper {
+  .image-wrapper {
     @apply bg-[#C4C4C4] w-full h-auto aspect-video;
   }
 
-  .thumbnail-wrapper img {
+  .image-wrapper img {
     @apply object-cover h-full w-full;
   }
 

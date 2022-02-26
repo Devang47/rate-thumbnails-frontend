@@ -33,7 +33,7 @@
           >
         </li>
         <li class="github-icon">
-          <a href="https://github.com/Devang47/Rate-Thumbnails">
+          <a href="https://github.com/Devang47/rate-thumbnails-frontend">
             <Github />
           </a>
         </li>

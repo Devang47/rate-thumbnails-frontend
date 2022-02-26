@@ -30,6 +30,7 @@
     const { title, image } = await getYoutubeVideoInfo(youtubeVideoURL);
     videoTitle = title || 'This is the default title, maybe due to a error';
     videoImage = image;
+    console.log(videoTitle, videoImage);
     loading = false;
   };
 
@@ -79,97 +80,97 @@
 
 {#if loading}
   <LoadingScreen />
-{/if}
-
-<main in:fly={{ y: 20, duration: 600 }}>
-  <div class="create-grid">
-    <div class="left-grid">
-      <div class="create-item-input">
-        <h1 class="">Create item:</h1>
-        <div class="">
-          <div>
-            <label for="url" class="block text-sm font-medium text-gray-200">Video URL:</label>
-            <div class="mt-2">
-              <input
-                type="url"
-                name="url"
-                id="url"
-                bind:value={youtubeVideoURL}
-                class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md max-w-[350px]"
-                placeholder="https://www.youtube.com/watch?v=***"
-              />
+{:else}
+  <main in:fly={{ y: 20, duration: 600 }}>
+    <div class="create-grid">
+      <div class="left-grid">
+        <div class="create-item-input">
+          <h1 class="">Create item:</h1>
+          <div class="">
+            <div>
+              <label for="url" class="block text-sm font-medium text-gray-200">Video URL:</label>
+              <div class="mt-2">
+                <input
+                  type="url"
+                  name="url"
+                  id="url"
+                  bind:value={youtubeVideoURL}
+                  class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md max-w-[350px]"
+                  placeholder="https://www.youtube.com/watch?v=***"
+                />
+              </div>
             </div>
           </div>
-        </div>
-        <div class="or-manually">or manually</div>
-        <div class="manual-create-input">
-          <label for="manual-input-thumbnail" class="">
-            <input
-              class="manual-input-thumbnail"
-              type="file"
-              on:input={fileInput}
-              name="manual-input-thumbnail"
-              id="manual-input-thumbnail"
-              placeholder="Enter Thumbnail"
-            />
-            <div class="">
-              {#if selectedCustomThumbnailURL}
-                <img class="custom-image-input" src={selectedCustomThumbnailURL} alt="" />
-              {:else}
-                <div class="custom-image-input default-image">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                    role="img"
-                    width="1em"
-                    height="1em"
-                    preserveAspectRatio="xMidYMid meet"
-                    viewBox="0 0 24 24"
-                    ><g
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      ><path
-                        d="M12 12v9m0-9l-2.5 2m2.5-2l2.5 2M5.034 9.117A4.002 4.002 0 0 0 6 17h1"
-                      /><path d="M15.83 7.138a5.5 5.5 0 0 0-10.796 1.98S5.187 10 5.5 10.5" /><path
-                        d="M17 17a5 5 0 1 0-1.17-9.862L14.5 7.5"
-                      /></g
-                    ></svg
-                  >
-                </div>
-              {/if}
-            </div>
-          </label>
-
-          <div class="mt-5">
-            <label for="Title" class="block text-sm font-medium text-gray-200">Title</label>
-            <div class="mt-2">
+          <div class="or-manually">or manually</div>
+          <div class="manual-create-input">
+            <label for="manual-input-thumbnail" class="">
               <input
-                type="text"
-                name="Title"
-                id="Title"
-                bind:value={customTitle}
-                class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md max-w-[350px]"
-                placeholder="Enter Title"
+                class="manual-input-thumbnail"
+                type="file"
+                on:input={fileInput}
+                name="manual-input-thumbnail"
+                id="manual-input-thumbnail"
+                placeholder="Enter Thumbnail"
               />
+              <div class="">
+                {#if selectedCustomThumbnailURL}
+                  <img class="custom-image-input" src={selectedCustomThumbnailURL} alt="" />
+                {:else}
+                  <div class="custom-image-input default-image">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                      role="img"
+                      width="1em"
+                      height="1em"
+                      preserveAspectRatio="xMidYMid meet"
+                      viewBox="0 0 24 24"
+                      ><g
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        ><path
+                          d="M12 12v9m0-9l-2.5 2m2.5-2l2.5 2M5.034 9.117A4.002 4.002 0 0 0 6 17h1"
+                        /><path d="M15.83 7.138a5.5 5.5 0 0 0-10.796 1.98S5.187 10 5.5 10.5" /><path
+                          d="M17 17a5 5 0 1 0-1.17-9.862L14.5 7.5"
+                        /></g
+                      ></svg
+                    >
+                  </div>
+                {/if}
+              </div>
+            </label>
+
+            <div class="mt-5">
+              <label for="Title" class="block text-sm font-medium text-gray-200">Title</label>
+              <div class="mt-2">
+                <input
+                  type="text"
+                  name="Title"
+                  id="Title"
+                  bind:value={customTitle}
+                  class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md max-w-[350px]"
+                  placeholder="Enter Title"
+                />
+              </div>
             </div>
           </div>
-        </div>
-        <div class="create-btn">
-          <Button variant={'selected'} class="" on:click={previewVideo}>Preview</Button>
-          <Button variant={'selected'} class="" on:click={createVideoItem}>Create</Button>
+          <div class="create-btn">
+            <Button variant={'selected'} class="" on:click={previewVideo}>Preview</Button>
+            <Button variant={'selected'} class="" on:click={createVideoItem}>Create</Button>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="video-model-wrapper">
-      <div class="preview">Preview:</div>
-      <VideoModel thumbnail={videoImage} title={videoTitle} />
+      <div class="video-model-wrapper">
+        <div class="preview">Preview:</div>
+        <VideoModel image={videoImage} title={videoTitle} />
+      </div>
     </div>
-  </div>
-</main>
+  </main>
+{/if}
 
 <style lang="postcss">
   h1 {
