@@ -1,16 +1,85 @@
 <script lang="ts">
+  import axios from 'axios';
+  import { fly } from 'svelte/transition';
+  import { toast } from '@zerodevx/svelte-toast';
+
   import Button from '$lib/components/Button.svelte';
   import VideoModel from '$lib/components/VideoModel.svelte';
-  import { fly } from 'svelte/transition';
+  import { getYoutubeVideoInfo } from '$utils';
+  import LoadingScreen from '$components/LoadingScreen.svelte';
 
-  let youtubeVideoURL;
+  let youtubeVideoURL: string;
   let selectedCustomThumbnailURL: string;
   let customTitle = '';
-  const fileInput = (e) => {
+  let loading = false;
+
+  let videoTitle: string, videoImage: string;
+
+  const successTheme = {
+    '--toastBackground': '#48BB78',
+    '--toastBarBackground': '#2F855A',
+  };
+
+  const errorTheme = {
+    '--toastBackground': '#E0675A',
+    '--toastBarBackground': '#A34439',
+  };
+
+  const getVideoPreview = async () => {
+    loading = true;
+    const { title, image } = await getYoutubeVideoInfo(youtubeVideoURL);
+    videoTitle = title || 'This is the default title, maybe due to a error';
+    videoImage = image;
+    loading = false;
+  };
+
+  const previewVideo = async () => {
+    loading = true;
+    if (youtubeVideoURL) {
+      await getVideoPreview();
+      return (loading = false);
+    }
+    videoImage = selectedCustomThumbnailURL;
+    videoTitle = customTitle || 'this is the default title, maybe due to a error';
+    loading = false;
+  };
+
+  const fileInput = async (e) => {
     let file = e.target.files[0];
-    selectedCustomThumbnailURL = URL.createObjectURL(file);
+
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      const base64data = reader.result;
+      selectedCustomThumbnailURL = base64data as string;
+    };
+  };
+
+  const createVideoItem = async () => {
+    loading = true;
+    if (!videoTitle || !videoImage) {
+      loading = false;
+      return toast.push('Enter title or image to continue!!', {
+        theme: errorTheme,
+      });
+    }
+
+    await axios.post('http://localhost:8080/create', {
+      title: videoTitle,
+      image: videoImage,
+    });
+
+    toast.push('Done!!', {
+      theme: successTheme,
+    });
+
+    loading = false;
   };
 </script>
+
+{#if loading}
+  <LoadingScreen />
+{/if}
 
 <main in:fly={{ y: 20, duration: 600 }}>
   <div class="create-grid">
@@ -19,12 +88,12 @@
         <h1 class="">Create item:</h1>
         <div class="">
           <div>
-            <label for="email" class="block text-sm font-medium text-gray-200">Email</label>
+            <label for="url" class="block text-sm font-medium text-gray-200">Video URL:</label>
             <div class="mt-2">
               <input
                 type="url"
-                name="email"
-                id="email"
+                name="url"
+                id="url"
                 bind:value={youtubeVideoURL}
                 class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md max-w-[350px]"
                 placeholder="https://www.youtube.com/watch?v=***"
@@ -89,15 +158,15 @@
           </div>
         </div>
         <div class="create-btn">
-          <Button variant={'selected'} class="">Preview</Button>
-          <Button variant={'selected'} class="">Create</Button>
+          <Button variant={'selected'} class="" on:click={previewVideo}>Preview</Button>
+          <Button variant={'selected'} class="" on:click={createVideoItem}>Create</Button>
         </div>
       </div>
     </div>
 
     <div class="video-model-wrapper">
       <div class="preview">Preview:</div>
-      <VideoModel thumbnail={selectedCustomThumbnailURL} title={customTitle} />
+      <VideoModel thumbnail={videoImage} title={videoTitle} />
     </div>
   </div>
 </main>

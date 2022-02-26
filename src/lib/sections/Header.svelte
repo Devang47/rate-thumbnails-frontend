@@ -6,7 +6,6 @@
 
   import { page } from '$app/stores';
   let pathname = $page.url.pathname;
-  console.log(pathname, pathname === '/' ? 'selected' : 'unselected');
 </script>
 
 <nav>

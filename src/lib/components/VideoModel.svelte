@@ -30,7 +30,7 @@
 
 <style lang="postcss">
   .video-wrapper {
-    @apply w-full lg:w-[400px] p-4 bg-[#181818] relative;
+    @apply w-full max-w-[360px] p-4 bg-[#181818] relative;
   }
 
   .thumbnail-wrapper {
@@ -42,12 +42,12 @@
   }
 
   .video-details {
-    @apply flex items-start justify-start py-4 px-3;
+    @apply flex items-start justify-start py-4 pr-3;
   }
 
   .video-title {
     @apply text-light px-4 font-medium w-full overflow-hidden overflow-ellipsis;
-    @apply max-h-[3rem];
+    @apply max-h-[3rem] text-left;
     font-family: 'Roboto', 'Arial', sans-serif;
     -webkit-line-clamp: 2;
   }
