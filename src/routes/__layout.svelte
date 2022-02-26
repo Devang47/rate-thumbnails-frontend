@@ -5,7 +5,7 @@
 </script>
 
 <svelte:head>
-  <title>Svelte-Tailwind Starter</title>
+  <title>Rate thumbnails</title>
 </svelte:head>
 
 <Header />

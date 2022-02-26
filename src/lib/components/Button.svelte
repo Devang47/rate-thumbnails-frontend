@@ -19,7 +19,7 @@
   }
 
   .selected {
-    @apply bg-gradient-to-br from-blue_highlight to-[#2D3EC2] text-white;
+    @apply bg-[#0077b6] text-white;
   }
 
   .unselected {

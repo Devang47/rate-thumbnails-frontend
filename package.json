@@ -36,6 +36,7 @@
   },
   "type": "module",
   "dependencies": {
-    "@sveltejs/adapter-static": "1.0.0-next.28"
+    "@sveltejs/adapter-static": "1.0.0-next.28",
+    "@tailwindcss/forms": "^0.4.0"
   }
 }

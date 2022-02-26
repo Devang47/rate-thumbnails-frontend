@@ -1,5 +1,5 @@
 module.exports = {
-  content: ["./src/**/*.{html,js}"],
+  content: ['./src/**/*.{html,js,svelte,ts}'],
   theme: {
     colors: {
       ...require("tailwindcss/colors"),
@@ -8,10 +8,8 @@ module.exports = {
       light: '#EDEDED',
       blue_highlight: '#4472CA'
     },
-    fontFamily: {},
   },
-  variants: {
-    extend: {},
-  },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 };
