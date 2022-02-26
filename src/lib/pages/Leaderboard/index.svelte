@@ -9,7 +9,6 @@
   let loading = true;
   onMount(async () => {
     videos = await getTopVideos();
-    console.log(videos);
     loading = false;
   });
 </script>

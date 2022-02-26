@@ -30,7 +30,6 @@
     const { title, image } = await getYoutubeVideoInfo(youtubeVideoURL);
     videoTitle = title || 'This is the default title, maybe due to a error';
     videoImage = image;
-    console.log(videoTitle, videoImage);
     loading = false;
   };
 

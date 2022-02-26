@@ -3,8 +3,6 @@
   export let title =
     'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis voluptatum quaerat vel voluptatibus. Quod rem deleniti voluptatum aliquid sun';
   export let score: number = null;
-
-  console.log(image, title);
 </script>
 
 <div class={`video-wrapper ${$$props.class}`}>
