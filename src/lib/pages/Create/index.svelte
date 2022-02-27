@@ -1,11 +1,10 @@
 <script lang="ts">
-  import axios from 'axios';
   import { fly } from 'svelte/transition';
   import { toast } from '@zerodevx/svelte-toast';
 
   import Button from '$lib/components/Button.svelte';
   import VideoModel from '$lib/components/VideoModel.svelte';
-  import { getYoutubeVideoInfo } from '$utils';
+  import { addVideoDocument, getYoutubeVideoInfo } from '$utils';
   import LoadingScreen from '$components/LoadingScreen.svelte';
 
   let youtubeVideoURL: string;
@@ -63,16 +62,10 @@
         theme: errorTheme,
       });
     }
-
-    await axios.post('http://localhost:8080/create', {
-      title: videoTitle,
-      image: videoImage,
-    });
-
+    await addVideoDocument(videoTitle, videoImage);
     toast.push('Done!!', {
       theme: successTheme,
     });
-
     loading = false;
   };
 </script>

@@ -15,7 +15,7 @@
 
 <style lang="postcss">
   button {
-    @apply py-3 px-4 rounded-lg font-semibold text-white duration-100;
+    @apply py-2.5 px-3 md:py-3 md:px-4 rounded-lg text-sm md:text-base font-semibold text-white duration-100;
   }
 
   .selected {

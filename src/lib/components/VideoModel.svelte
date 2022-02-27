@@ -11,7 +11,9 @@
   </div>
   <div class="video-details">
     <div class="channel-icon">
-      <div class="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-dark_01" />
+      <div class="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-dark_01 overflow-hidden">
+        <img class="h-full w-full object-cover " src={image} alt="" />
+      </div>
     </div>
 
     <div class="video-title">

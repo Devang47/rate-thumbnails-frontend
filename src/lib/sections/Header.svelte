@@ -48,7 +48,7 @@
   }
 
   .nav-items {
-    @apply flex items-center justify-between;
+    @apply flex items-center justify-between gap-4 flex-col md:flex-row;
     @apply mx-auto lg:max-w-[1300px];
   }
 
