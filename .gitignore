@@ -1,12 +1,12 @@
 .DS_Store
 node_modules
+/build
 /.svelte-kit
 /package
 .vscode/
 pnpm-lock.yaml
 .pnpm-debug.log
 dist
-build
 package-lock.json
 yarn.lock
 /examples/**/.svelte
