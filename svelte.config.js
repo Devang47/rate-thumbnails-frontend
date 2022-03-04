@@ -1,4 +1,5 @@
 import preprocess from 'svelte-preprocess';
+// import adapter from '@sveltejs/adapter-auto';
 import adapter from '@sveltejs/adapter-static';
 import path from 'path';
 
@@ -13,7 +14,7 @@ const config = {
   prerender: {
     enabled: false
   },
-  ssr: false,
+
   kit: {
     target: '#svelte',
     adapter: adapter({
@@ -23,6 +24,7 @@ const config = {
       fallback: null,
       precompress: false
     }),
+    ssr: false,
     vite: {
       resolve: {
         alias: {
