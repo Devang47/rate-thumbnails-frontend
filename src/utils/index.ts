@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const SERVER_URL = 'https://rate-thumbnails.herokuapp.com/';
+const SERVER_URL = 'https://rate-thumbnails.onrender.com/';
 
 export const getYoutubeVideoInfo = async (url) => {
   try {
